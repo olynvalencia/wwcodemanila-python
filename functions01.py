@@ -23,12 +23,15 @@ PHP_EXCHANGE_RATE = {
 def converter(currency, amount):
     return amount * PHP_EXCHANGE_RATE[currency]
 
-customer_currency = input("Welcome to Mang Toto's ForEx! What is your currency? We accept (usd, jpy, sgd): ").lower()
-if not (customer_currency in PHP_EXCHANGE_RATE):
-    print("Sorry! We do not exchange {}!".format(customer_currency.upper()))
-else:
+def start():
+    customer_currency = input("Welcome to Mang Toto's ForEx! What is your currency? We accept (usd, jpy, sgd): ").lower()
+    if not (customer_currency in PHP_EXCHANGE_RATE):
+        print("Sorry! We do not exchange {}!".format(customer_currency.upper()))
+        return
     customer_amt = float(input("How much {}?".format(customer_currency.upper())))
     print("Your {:.02f} {} is equivalent to {:.02f} PHP".format(customer_amt, 
         customer_currency.upper(), 
         float(converter(customer_currency, customer_amt))))
+
+start()
 
